@@ -17,6 +17,11 @@ class JobsController extends Controller
         //$jobs = Job::with('items')->get();
         $jobs = Job::all();
         return response()->json($jobs);
+
+        // return response()
+        //     ->json([
+        //         'model' => Customer::filterPaginateOrder()
+        //     ]);
     }
 
     /**
