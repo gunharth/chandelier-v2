@@ -23671,13 +23671,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.fetchData();
         },
         fetchData: function fetchData() {
+            var _this = this;
+
             var vm = this;
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(this.buildURL()).then(function (response) {
-                //console.log(response.data);
-                __WEBPACK_IMPORTED_MODULE_0_vue___default.a.set(vm.$data, 'model', response.data);
-            })
-            //.then(({data}) => this.model = data)
-            .catch(function (error) {
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(this.buildURL())
+            // .then(function(response) {
+            //     Vue.set(vm.$data, 'model', response.data)
+            // })
+            .then(function (_ref) {
+                var data = _ref.data;
+                return _this.model = data;
+            }).catch(function (error) {
                 console.log(error);
             });
         },

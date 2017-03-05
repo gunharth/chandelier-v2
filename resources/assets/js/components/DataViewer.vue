@@ -123,12 +123,11 @@
             fetchData() {
                 var vm = this
                 axios.get(this.buildURL())
-                    .then(function(response) {
-                        //console.log(response.data);
-                        Vue.set(vm.$data, 'model', response.data)
-                    })
-                    //.then(({data}) => this.model = data)
-                    .catch(function(error) {
+                    // .then(function(response) {
+                    //     Vue.set(vm.$data, 'model', response.data)
+                    // })
+                    .then(({data}) => this.model = data)
+                    .catch((error) => {
                         console.log(error)
                     })
             },
