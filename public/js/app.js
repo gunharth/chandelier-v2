@@ -23615,6 +23615,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -23651,11 +23663,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
-    beforeMount: function beforeMount() {
+    created: function created() {
         this.fetchData();
     },
 
     methods: {
+        next: function next() {
+            if (this.model.next_page_url) {
+                this.params.page++;
+                this.fetchData();
+            }
+        },
+        prev: function prev() {
+            if (this.model.prev_page_url) {
+                this.params.page--;
+                this.fetchData();
+            }
+        },
         sort: function sort(column) {
             if (column === this.params.column) {
                 if (this.params.direction === 'desc') {
@@ -23674,11 +23698,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             var vm = this;
-            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(this.buildURL())
-            // .then(function(response) {
-            //     Vue.set(vm.$data, 'model', response.data)
-            // })
-            .then(function (_ref) {
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(this.buildURL()).then(function (_ref) {
                 var data = _ref.data;
                 return _this.model = data;
             }).catch(function (error) {
@@ -23719,6 +23739,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -23729,7 +23755,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             title: 'Jobs',
             source: '/api',
             create: '/customer/create',
-            thead: [{ title: 'ID', key: 'id', sort: true }, { title: 'Client', key: 'client', sort: true }],
+            thead: [{ title: 'ID', key: 'id', sort: true }, { title: 'Client', key: 'client', sort: true }, { title: 'client_ref', key: 'client_ref', sort: true }, { title: 'job_status', key: 'job_status', sort: true }, { title: 'order_type', key: 'order_type', sort: true }, { title: 'shipping_date', key: 'shipping_date', sort: true }, { title: 'shipping_notes', key: 'shipping_notes', sort: true }, { title: 'parts_status', key: 'parts_status', sort: true }],
             filter: ['id', 'client']
         };
     },
@@ -23835,7 +23861,10 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(11);
 
 
-var routes = [{ path: '/', component: __webpack_require__(41) }, { path: '/items', component: __webpack_require__(40) }, { path: '/products', component: __webpack_require__(42) }];
+var routes = [{ path: '/', component: __webpack_require__(41) },
+//{	path: '/job/:id', 	component: require('./views/jobs/show.vue')},
+
+{ path: '/items', component: __webpack_require__(40) }, { path: '/products', component: __webpack_require__(42) }];
 
 /* harmony default export */ __webpack_exports__["a"] = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
 	routes: routes,
@@ -26380,10 +26409,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         return [_c('tr', {
           on: {
             "click": function($event) {
-              _vm.$router.push('/customer/' + props.item.id)
+              _vm.$router.push('/jobs/' + props.item.id)
             }
           }
-        }, [_c('td', [_vm._v(_vm._s(props.item.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.client))])])]
+        }, [_c('td', [_vm._v(_vm._s(props.item.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.client))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.client_ref))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.job_status))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.order_type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.shipping_date))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.shipping_notes))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.parts_status))])])]
       }]
     ])
   })
@@ -26566,7 +26595,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_c('span', [_vm._v(_vm._s(item.title))]), _vm._v(" "), (_vm.params.column === item.key) ? _c('span', [(_vm.params.direction === 'asc') ? _c('span', [_vm._v("▲")]) : _c('span', [_vm._v("▼")])]) : _vm._e()]) : _c('div', [_c('span', [_vm._v(_vm._s(item.title))])])])
-  }))]), _vm._v(" "), _c('tbody', [_vm._l((_vm.model), function(item) {
+  }))]), _vm._v(" "), _c('tbody', [_vm._l((_vm.model.data), function(item) {
     return _vm._t("default", null, {
       item: item
     })
@@ -26592,7 +26621,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.per_page = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
       }, _vm.fetchData]
     }
-  }, [_c('option', [_vm._v("10")]), _vm._v(" "), _c('option', [_vm._v("25")]), _vm._v(" "), _c('option', [_vm._v("50")])])])])])
+  }, [_c('option', [_vm._v("10")]), _vm._v(" "), _c('option', [_vm._v("25")]), _vm._v(" "), _c('option', [_vm._v("50")])])]), _vm._v(" "), _c('div', {
+    staticClass: "pagination-item"
+  }, [_c('small', [_vm._v("Showing " + _vm._s(_vm.model.from) + " - " + _vm._s(_vm.model.to) + " of " + _vm._s(_vm.model.total))])]), _vm._v(" "), _c('div', {
+    staticClass: "pagination-item"
+  }, [_c('small', [_vm._v("Current page: ")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.params.page),
+      expression: "params.page"
+    }],
+    staticClass: "pagination-input",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.params.page)
+    },
+    on: {
+      "keyup": function($event) {
+        if (_vm._k($event.keyCode, "enter", 13)) { return null; }
+        _vm.fetchData($event)
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.params.page = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('small', [_vm._v(" of " + _vm._s(_vm.model.last_page))])]), _vm._v(" "), _c('div', {
+    staticClass: "pagination-item"
+  }, [_c('button', {
+    staticClass: "btn btn-default btn-sm",
+    on: {
+      "click": _vm.prev
+    }
+  }, [_vm._v("Prev")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-default btn-sm",
+    on: {
+      "click": _vm.next
+    }
+  }, [_vm._v("Next")])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

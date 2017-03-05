@@ -15,8 +15,9 @@ class JobsController extends Controller
     public function index()
     {
         //$jobs = Job::with('items')->get();
-        $jobs = Job::all();
+        $jobs = Job::filterPaginateOrder();
         return response()->json($jobs);
+        //return response()->json(['model' => $jobs]);
 
         // return response()
         //     ->json([

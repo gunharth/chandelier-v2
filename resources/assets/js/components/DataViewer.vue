@@ -49,7 +49,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <slot v-for="item in model" :item="item"></slot>
+                    <slot v-for="item in model.data" :item="item"></slot>
                 </tbody>
             </table>
         </div>
@@ -62,7 +62,19 @@
                     <option>50</option>
                 </select>
             </div>
-
+            <div class="pagination-item">
+                <small>Showing {{model.from}} - {{model.to}} of {{model.total}}</small>
+            </div>
+            <div class="pagination-item">
+                <small>Current page: </small>
+                <input type="text" class="pagination-input" v-model="params.page"
+                    @keyup.enter="fetchData">
+                <small> of {{model.last_page}}</small>
+            </div>
+            <div class="pagination-item">
+                <button @click="prev" class="btn btn-default btn-sm">Prev</button>
+                <button @click="next" class="btn btn-default btn-sm">Next</button>
+            </div>
         </div>
     </div>
 </template>
@@ -102,10 +114,22 @@
                 }
             }
         },
-        beforeMount() {
+        created() {
             this.fetchData()
         },
         methods: {
+            next() {
+                if(this.model.next_page_url) {
+                    this.params.page++
+                    this.fetchData()
+                }
+            },
+            prev() {
+                if(this.model.prev_page_url) {
+                    this.params.page--
+                    this.fetchData()
+                }
+            },
             sort(column) {
                 if(column === this.params.column) {
                     if(this.params.direction === 'desc') {
@@ -123,13 +147,8 @@
             fetchData() {
                 var vm = this
                 axios.get(this.buildURL())
-                    // .then(function(response) {
-                    //     Vue.set(vm.$data, 'model', response.data)
-                    // })
                     .then(({data}) => this.model = data)
-                    .catch((error) => {
-                        console.log(error)
-                    })
+                    .catch((error) => { console.log(error) })
             },
             buildURL() {
                 var p = this.params
