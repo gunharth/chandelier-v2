@@ -19,3 +19,5 @@ Auth::routes();
 Route::get('home', 'HomeController@index');
 
 Route::get('api', 'JobsController@index');
+Route::get('api/items', 'ItemsController@index');
+Route::get('api/products', 'ProductsController@index');
