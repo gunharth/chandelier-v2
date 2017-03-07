@@ -86,7 +86,7 @@
         props: ['source', 'thead', 'filter', 'create', 'title'],
         data() {
             return {
-                showFilter: false,
+                showFilter: true,
                 model: {
                     data: []
                 },
@@ -117,6 +117,11 @@
         created() {
             this.fetchData()
         },
+        // computed: {
+        //   orderedClient: function () {
+        //     return _.orderBy(this.model.data, 'client')
+        //   }
+        // },
         methods: {
             next() {
                 if(this.model.next_page_url) {

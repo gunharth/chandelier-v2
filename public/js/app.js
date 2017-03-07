@@ -23669,7 +23669,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['source', 'thead', 'filter', 'create', 'title'],
     data: function data() {
         return {
-            showFilter: false,
+            showFilter: true,
             model: {
                 data: []
             },
@@ -23701,6 +23701,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.fetchData();
     },
 
+    // computed: {
+    //   orderedClient: function () {
+    //     return _.orderBy(this.model.data, 'client')
+    //   }
+    // },
     methods: {
         next: function next() {
             if (this.model.next_page_url) {
@@ -23788,50 +23793,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DataViewer_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DataViewer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_DataViewer_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = {
-    name: 'Jobs',
-    data: function data() {
-        return {
-            title: 'Jobs',
-            source: '/api',
-            create: '/customer/create',
-            thead: [{ title: 'ID', key: 'id', sort: true }, { title: 'Client', key: 'client', sort: true }, { title: 'client_ref', key: 'client_ref', sort: true }, { title: 'job_status', key: 'job_status', sort: true }, { title: 'order_type', key: 'order_type', sort: true }, { title: 'shipping_date', key: 'shipping_date', sort: true }, { title: 'shipping_notes', key: 'shipping_notes', sort: true }, { title: 'parts_status', key: 'parts_status', sort: true }],
-            filter: ['id', 'client']
-        };
-    },
-
-    components: {
-        DataViewer: __WEBPACK_IMPORTED_MODULE_0__components_DataViewer_vue___default.a
-    }
-};
-
-/***/ }),
+/* 35 */,
 /* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -23916,10 +23878,9 @@ window.axios.defaults.headers.common = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(12);
 
 
-var routes = [{ path: '/', component: __webpack_require__(41) },
-//{	path: '/job/:id', 	component: require('./views/jobs/show.vue')},
-
-{ path: '/items', component: __webpack_require__(40) }, { path: '/products', component: __webpack_require__(42) }];
+var routes = [{ path: '/', component: __webpack_require__(58) },
+// {	path: '/jobs/create', component: require('./views/jobs/form.vue')},
+{ path: '/jobs/:id/edit', component: __webpack_require__(60), meta: { mode: 'edit' } }, { path: '/items', component: __webpack_require__(40) }, { path: '/products', component: __webpack_require__(42) }];
 
 /* harmony default export */ __webpack_exports__["a"] = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
 	routes: routes,
@@ -26345,40 +26306,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(2)(
-  /* script */
-  __webpack_require__(35),
-  /* template */
-  __webpack_require__(43),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/Guni/Sites/chandelier-v2/resources/assets/js/views/jobs.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] jobs.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-07db7728", Component.options)
-  } else {
-    hotAPI.reload("data-v-07db7728", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 41 */,
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26413,40 +26341,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('data-viewer', {
-    attrs: {
-      "source": _vm.source,
-      "thead": _vm.thead,
-      "filter": _vm.filter,
-      "create": _vm.create,
-      "title": _vm.title
-    },
-    scopedSlots: _vm._u([
-      ["default", function(props) {
-        return [_c('tr', {
-          on: {
-            "click": function($event) {
-              _vm.$router.push('/jobs/' + props.item.id)
-            }
-          }
-        }, [_c('td', [_vm._v(_vm._s(props.item.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.client))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.client_ref))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.job_status))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.order_type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.shipping_date))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.shipping_notes))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.parts_status))])])]
-      }]
-    ])
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-07db7728", module.exports)
-  }
-}
-
-/***/ }),
+/* 43 */,
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26777,6 +26672,491 @@ module.exports = g;
 __webpack_require__(14);
 module.exports = __webpack_require__(15);
 
+
+/***/ }),
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DataViewer_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_DataViewer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_DataViewer_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    name: 'Jobs',
+    data: function data() {
+        return {
+            title: 'All Jobs',
+            source: '/api',
+            create: '/customer/create',
+            thead: [{ title: 'Job #', key: 'id', sort: true }, { title: 'Client', key: 'client', sort: true }, { title: 'Project', key: 'project', sort: true }, { title: 'Job Status', key: 'job_status', sort: true }, { title: 'Order Type', key: 'order_type', sort: true }, { title: 'Shipping Date', key: 'shipping_date', sort: true }, { title: 'Payment', key: 'payment', sort: true }, { title: 'Parts Status', key: 'parts_status', sort: true }, { title: 'Qty Items', key: 'qty_items', sort: true }, { title: 'notes', key: 'notes', sort: true }],
+            filter: ['id', 'client']
+        };
+    },
+
+    components: {
+        DataViewer: __WEBPACK_IMPORTED_MODULE_0__components_DataViewer_vue___default.a
+    }
+};
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(57),
+  /* template */
+  __webpack_require__(59),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/Guni/Sites/chandelier-v2/resources/assets/js/views/jobs/index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-99866c22", Component.options)
+  } else {
+    hotAPI.reload("data-v-99866c22", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('data-viewer', {
+    attrs: {
+      "source": _vm.source,
+      "thead": _vm.thead,
+      "filter": _vm.filter,
+      "create": _vm.create,
+      "title": _vm.title
+    },
+    scopedSlots: _vm._u([
+      ["default", function(props) {
+        return [_c('tr', [_c('td', [_c('a', {
+          on: {
+            "click": function($event) {
+              $event.preventDefault();
+              _vm.$router.push('/jobs/' + props.item.id + '/edit')
+            }
+          }
+        }, [_vm._v("RB" + _vm._s(props.item.id))])]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.client))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.project))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.job_status))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.order_type))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.shipping_date))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.payment))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.parts_status))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.qty_items))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(props.item.notes))])])]
+      }]
+    ])
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-99866c22", module.exports)
+  }
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(61),
+  /* template */
+  __webpack_require__(62),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/Guni/Sites/chandelier-v2/resources/assets/js/views/jobs/form.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] form.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-76159137", Component.options)
+  } else {
+    hotAPI.reload("data-v-76159137", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    name: 'JobForm',
+    data: function data() {
+        return {
+            form: {},
+            errors: {},
+            option: {},
+            title: 'Create',
+            initialize: '/api/jobs/create',
+            redirect: '/',
+            store: '/api/jobs',
+            method: 'post',
+            params: {
+                column: 'id',
+                direction: 'desc'
+            },
+            thead: [{ title: 'Job Item #', key: 'id', sort: true }, { title: 'Product', key: 'product_id', sort: true }]
+        };
+    },
+    beforeMount: function beforeMount() {
+        if (this.$route.meta.mode === 'edit') {
+            this.title = 'Edit';
+            this.initialize = '/api/jobs/' + this.$route.params.id + '/edit';
+            this.store = '/api/jobs/' + this.$route.params.id;
+            this.method = 'put';
+        }
+        this.fetchData();
+    },
+
+    watch: {
+        '$route': 'fetchData'
+    },
+    methods: {
+        sort: function sort(column) {
+            if (column === this.params.column) {
+                if (this.params.direction === 'desc') {
+                    this.params.direction = 'asc';
+                } else {
+                    this.params.direction = 'desc';
+                }
+            } else {
+                this.params.column = column;
+                this.params.direction = 'asc';
+            }
+
+            this.fetchData();
+        },
+        fetchData: function fetchData() {
+            var vm = this;
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(this.initialize).then(function (response) {
+                __WEBPACK_IMPORTED_MODULE_0_vue___default.a.set(vm.$data, 'form', response.data.form);
+                __WEBPACK_IMPORTED_MODULE_0_vue___default.a.set(vm.$data, 'option', response.data.option);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        save: function save() {
+            var vm = this;
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a[this.method](this.store, this.form).then(function (response) {
+                if (response.data.saved) {
+                    vm.$router.push(vm.redirect);
+                }
+            }).catch(function (error) {
+                __WEBPACK_IMPORTED_MODULE_0_vue___default.a.set(vm.$data, 'errors', error.response.data);
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_vm._v("\n        " + _vm._s(_vm.title) + "\n    ")]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_c('form', {
+    staticClass: "form",
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.save($event)
+      }
+    }
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Client")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.client),
+      expression: "form.client"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.form.client)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.client = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errors.client) ? _c('small', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.client[0]))]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Name")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.name),
+      expression: "form.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.form.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.name = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errors.name) ? _c('small', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.name[0]))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Email Address")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.email),
+      expression: "form.email"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.form.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.email = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errors.email) ? _c('small', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.email[0]))]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Phone Number")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.phone),
+      expression: "form.phone"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.form.phone)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.phone = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errors.phone) ? _c('small', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.phone[0]))]) : _vm._e()])]), _vm._v(" "), _c('div', {
+    staticClass: "col-sm-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Address")]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.address),
+      expression: "form.address"
+    }],
+    staticClass: "form-control",
+    domProps: {
+      "value": (_vm.form.address)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.address = $event.target.value
+      }
+    }
+  }), _vm._v(" "), (_vm.errors.address) ? _c('small', {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.address[0]))]) : _vm._e()])])]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-success"
+  }, [_vm._v("Save")])])]), _vm._v(" "), _c('table', {
+    staticClass: "table table-striped"
+  }, [_c('thead', [_c('tr', _vm._l((_vm.thead), function(item) {
+    return _c('th', [(item.sort) ? _c('div', {
+      staticClass: "dataviewer-th",
+      on: {
+        "click": function($event) {
+          _vm.sort(item.key)
+        }
+      }
+    }, [_c('span', [_vm._v(_vm._s(item.title))]), _vm._v(" "), (_vm.params.column === item.key) ? _c('span', [(_vm.params.direction === 'asc') ? _c('span', [_vm._v("▲")]) : _c('span', [_vm._v("▼")])]) : _vm._e()]) : _c('div', [_c('span', [_vm._v(_vm._s(item.title))])])])
+  }))]), _vm._v(" "), _c('tbody', _vm._l((_vm.form.items), function(item) {
+    return _c('tr', {
+      attrs: {
+        "item": item
+      }
+    }, [_c('td', [_vm._v(_vm._s(item.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(item.product_id))])])
+  }))])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-76159137", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -1,8 +1,9 @@
 import VueRouter from 'vue-router';
 
 let routes = [
-	{ 	path: '/', 			component: require('./views/jobs'		) },
-	//{	path: '/job/:id', 	component: require('./views/jobs/show.vue')},
+	{ 	path: '/', 				component: require('./views/jobs/index'		) },
+	// {	path: '/jobs/create', component: require('./views/jobs/form.vue')},
+	{	path: '/jobs/:id/edit', component: require('./views/jobs/form'), meta: {mode: 'edit'}},
 
 	{ 	path: '/items', 	component: require('./views/items'		) },
 	{ 	path: '/products', 	component: require('./views/products'	) }

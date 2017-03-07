@@ -47,17 +47,6 @@ class JobsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -65,7 +54,12 @@ class JobsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = Job::with('items')->findOrFail($id);
+        return response()
+            ->json([
+                'form' => $job,
+                'option' => []
+            ]);
     }
 
     /**
