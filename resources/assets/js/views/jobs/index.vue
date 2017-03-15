@@ -1,24 +1,13 @@
 <template>
     <data-viewer :source="source" :thead="thead" :filter="filter" :create="create" :title="title">
         <template scope="props">
-            <tr>
-                <td><a @click.prevent="$router.push('/jobs/' + props.item.id + '/edit')">RB{{props.item.id}}</a></td>
-                <td>{{props.item.client}}</td>
-                <td>{{props.item.project}}</td>
-                <td>{{props.item.job_status}}</td>
-                <td>{{props.item.order_type}}</td>
-                <td>{{props.item.shipping_date}}</td>
-                <td>{{props.item.payment}}</td>
-                <td>{{props.item.parts_status}}</td>
-                <td>{{props.item.qty_items}}</td>
-                <td><text-field :value="props.item.notes"></text-field></td>
-            </tr>
+            <table-row :props="props"></table-row>
         </template>
     </data-viewer>
 </template>
 <script>
     import DataViewer from '../../components/DataViewer'
-    import TextField from '../../components/TextField'
+    import TableRow from '../../components/TableRow'
 
     export default {
         name: 'Jobs',
@@ -46,7 +35,7 @@
         },
         components: {
             DataViewer,
-            TextField
+            TableRow
         }
     }
 </script>
