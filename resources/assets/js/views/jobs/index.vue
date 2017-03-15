@@ -11,13 +11,14 @@
                 <td>{{props.item.payment}}</td>
                 <td>{{props.item.parts_status}}</td>
                 <td>{{props.item.qty_items}}</td>
-                <td>{{props.item.notes}}</td>
+                <td><text-field :value="props.item.notes"></text-field></td>
             </tr>
         </template>
     </data-viewer>
 </template>
 <script>
-    import DataViewer from '../../components/DataViewer.vue'
+    import DataViewer from '../../components/DataViewer'
+    import TextField from '../../components/TextField'
 
     export default {
         name: 'Jobs',
@@ -44,7 +45,8 @@
             }
         },
         components: {
-            DataViewer
+            DataViewer,
+            TextField
         }
     }
 </script>
