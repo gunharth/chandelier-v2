@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('api', 'JobsController@index');
 	Route::get('api/jobs', 'JobsController@index');
 	Route::get('api/jobs/{id}/edit', 'JobsController@edit');
+	Route::post('api/jobs/{id}', 'JobsController@update');
 
 	Route::get('api/items', 'ItemsController@index');
 	Route::get('api/products', 'ProductsController@index');

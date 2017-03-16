@@ -1,23 +1,21 @@
 <template>
 	<div class="form-group">
-        <input class="form-control" @keyup="sendChangeRequest" v-model="textdata">
+        <input class="form-control" @keyup="sendChangeRequest" v-model="field">
     </div>
 </template>
 
 <script>
-	//import Vue from 'vue'
-    //import axios from 'axios'
-
     export default {
-        props: ['value'],
+        props: ['fieldName','value'],
         data: function() {
         	return {
-        		textdata: this.value
+        		field: this.value,
+        		name: this.fieldName
         	}
         },
         methods: {
         	sendChangeRequest() {
-        		this.$emit('saveChanges', this.textdata);
+        		this.$emit('saveChanges', this.name, this.field);
         	}
         }
     }

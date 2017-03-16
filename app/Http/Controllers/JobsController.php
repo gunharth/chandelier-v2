@@ -71,7 +71,12 @@ class JobsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $job = Job::findOrFail($id);
+        $job->update($request->all());
+        return response()
+            ->json([
+                'saved' => true
+            ]);
     }
 
     /**

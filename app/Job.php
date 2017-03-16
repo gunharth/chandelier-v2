@@ -11,7 +11,9 @@ class Job extends Model
 
     use JobDataFilter;
 
-    protected $fillable = [];
+    protected $fillable = [
+    	'project','notes'
+    ];
 
     protected $filter = [
         'id', 'client', 'client_ref', 'job_status', 'order_type', 'shipping_date', 'shipping_notes'

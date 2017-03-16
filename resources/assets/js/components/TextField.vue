@@ -1,38 +1,22 @@
 <template>
 	<div class="form-group">
-        <textarea class="form-control" @keyup="debounceMe" v-model="textdata"></textarea>
+        <textarea class="form-control" @keyup="sendChangeRequest" v-model="field"></textarea>
     </div>
 </template>
 
 <script>
-	//import Vue from 'vue'
-    //import axios from 'axios'
-
     export default {
-        props: ['value'],
+        props: ['fieldName','value'],
         data: function() {
         	return {
-        		textdata: this.value
+        		field: this.value,
+        		name: this.fieldName
         	}
         },
         methods: {
-
-			debounceMe: _.debounce(function() {
-				this.saveMe();
-			}, 700),
-
-			noDebounce: function() {
-		      this.saveMe();
-		    },
-
-		    saveMe: function() {
-		      //app.saveme = 'saved';
-		      console.log(this.textdata)
-		      setTimeout(function() {
-		        //app.saveme = '';
-		      }, 700);
-		    }
-
-		}
+        	sendChangeRequest() {
+        		this.$emit('saveChanges', this.name, this.field);
+        	}
+        }
     }
 </script>
