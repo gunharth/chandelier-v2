@@ -12,7 +12,7 @@ class Job extends Model
     use JobDataFilter;
 
     protected $fillable = [
-    	'project','notes'
+    	'client','project','job_status','notes'
     ];
 
     protected $filter = [

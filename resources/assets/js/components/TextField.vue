@@ -15,7 +15,8 @@
         },
         methods: {
         	sendChangeRequest() {
-        		this.$emit('saveChanges', this.name, this.field);
+        		bus.$emit('setSaveStatusDirty');
+                this.$emit('saveChanges', this.name, this.field);
         	}
         }
     }

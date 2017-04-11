@@ -1,6 +1,9 @@
 <template>
 	<div class="form-group">
-        <input class="form-control" @keyup="sendChangeRequest" v-model="field">
+        <select class="form-control" @change="sendChangeRequest" v-model="field">
+        <option value="1">Option 1</option>
+        <option value="2">2</option>
+        </select>
     </div>
 </template>
 

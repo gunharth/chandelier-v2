@@ -1,7 +1,7 @@
 <template>
     <data-viewer :source="source" :thead="thead" :filter="filter" :create="create" :title="title">
         <template scope="props">
-            <table-row :props="props"></table-row>
+            <table-row :props="props" :thead="thead"></table-row>
         </template>
     </data-viewer>
 </template>

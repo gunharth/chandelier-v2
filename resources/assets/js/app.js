@@ -1,7 +1,14 @@
 import './bootstrap';
 import router from './routes';
 
-const app = new Vue({
+import SaveState from './components/SaveState'
+
+window.bus = new Vue();
+
+new Vue({
     el: '#app',
-    router
+    router,
+    components: {
+    	SaveState
+    }
 });

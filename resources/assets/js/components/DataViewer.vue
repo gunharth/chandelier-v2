@@ -79,8 +79,6 @@
     </div>
 </template>
 <script>
-    import Vue from 'vue'
-    import axios from 'axios'
 
     export default {
         props: ['source', 'thead', 'filter', 'create', 'title'],

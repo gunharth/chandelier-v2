@@ -27,6 +27,8 @@
                 </router-link>
             </ul>
 
+            <save-state></save-state>
+
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
             <router-link tag="li" to="/products">
